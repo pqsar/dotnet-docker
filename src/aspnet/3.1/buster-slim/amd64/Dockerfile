@@ -7,6 +7,7 @@ RUN apt-get update \
         libc6-dev \
         libgdiplus \
         libx11-dev \
+        gss-ntlmssp \
     && rm -rf /var/lib/apt/lists/*
     
 # Install ASP.NET Core
