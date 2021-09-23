@@ -1,5 +1,5 @@
 ARG REPO=mcr.microsoft.com/dotnet/runtime
-FROM $REPO:3.1.18-buster-slim
+FROM $REPO:3.1.19-buster-slim
 
 # install System.Drawing native dependencies
 RUN apt-get update \
