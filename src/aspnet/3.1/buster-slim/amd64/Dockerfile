@@ -1,5 +1,5 @@
 ARG REPO=mcr.microsoft.com/dotnet/runtime
-FROM $REPO:3.1.22-buster-slim
+FROM $REPO:3.1.24-buster-slim
 
 # install System.Drawing native dependencies
 RUN apt-get update \
@@ -11,9 +11,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
     
 # Install ASP.NET Core
-RUN aspnetcore_version=3.1.22 \
+RUN aspnetcore_version=3.1.24 \
     && curl -fSL --output aspnetcore.tar.gz https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/$aspnetcore_version/aspnetcore-runtime-$aspnetcore_version-linux-x64.tar.gz \
-    && aspnetcore_sha512='32332a09a2f05e56ca66fff2a27e988dc35dc12dcc312b62c99c2a7b2532fb02bab0fa7f49f73938999488c0463a0c79c151b020e01104b8e9cfab80a877b5f3' \
+    && aspnetcore_sha512='49e4796e44fccc5ee8ec6b5506a1f2d0a0de123b152ac3f9320823699a0e1f8895d83f13ab8f7273863ec64274a06027ec7f8896666b9c43b1f0d3ec3b3ef81a' \
     && echo "$aspnetcore_sha512  aspnetcore.tar.gz" | sha512sum -c - \
-    && tar -ozxf aspnetcore.tar.gz -C /usr/share/dotnet ./shared/Microsoft.AspNetCore.App \
+    && tar -oxzf aspnetcore.tar.gz -C /usr/share/dotnet ./shared/Microsoft.AspNetCore.App \
     && rm aspnetcore.tar.gz
